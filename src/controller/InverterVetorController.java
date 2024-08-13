@@ -7,22 +7,22 @@ public class InverterVetorController {
 		super();
 	}
 	
-	public int[] inverterVetor(int[] vet, int count) {
-		if (count == vet.length) {return vet;}
-		else if (count == (int)(vet.length-count) && vet.length%2 != 0) {return inverterVetor(vet, count+1);}
+	public int[] inverterVetor(int[] vet, int ini, int fim) {
+		if (ini > fim) {return vet;}
+		else if (ini == fim) {return inverterVetor(vet, ini+1, fim-1);}
 		else {
-			int aux = vet[count];
-			vet[count] = vet[(vet.length-1)-count];
-			vet[(vet.length-1)-count] = aux;
-			return inverterVetor (vet, count+1);
+			int aux = vet[ini];
+			vet[ini] = vet[fim];
+			vet[fim] = aux;
+			return inverterVetor (vet, ini+1, fim-1);
 		}
 	}
 	
 	public int[] popularVetor(int[] vet, int count) {
-		if (count < 0) {return vet;}
+		if (count == vet.length) {return vet;}
 		else {
-			vet[count] = Integer.parseInt(JOptionPane.showInputDialog("Insira o número para a posição: " + count + " do vetor."));
-			return popularVetor(vet, (count - 1));
+			vet[count] = Integer.parseInt(JOptionPane.showInputDialog("Insira o nÃºmero para a posiÃ§Ã£o: " + count + " do vetor."));
+			return popularVetor(vet, (count + 1));
 		}
 	}
 	
@@ -34,3 +34,4 @@ public class InverterVetorController {
 	}
 	
 }
+
